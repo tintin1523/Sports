@@ -1,0 +1,110 @@
+import 'package:flutter/material.dart';
+
+class LoginScreen extends StatelessWidget {
+  FocusNode emailNode = FocusNode();
+  FocusNode passNode = FocusNode();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.black,
+          leading: IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              print('Hello to the most beautiful app');
+            },
+          ),
+          title: Text('Sports App'),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search_off_outlined),
+            ),
+            IconButton(
+              icon: Icon(Icons.notifications),
+              onPressed: () {},
+            )
+          ]),
+      body: ListView(children: [
+        Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+          SizedBox(
+            height: 60.0,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 40.0),
+            child: Text(
+              'Don\'t give up, Don\'t ever give up',
+              style: TextStyle(
+                  fontSize: 25.0, letterSpacing: 1.0, fontFamily: 'Pantry'),
+            ),
+          ),
+          SizedBox(
+            height: 25.0,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 60.0, bottom: 20.0),
+            child: Image.asset(
+              'assets/images/running.png',
+              width: 65.0,
+              height: 65.0,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: TextFormField(
+              onFieldSubmitted: (val) {
+                //class FocusScope and method requestFocus
+                FocusScope.of(context).requestFocus(passNode);
+              },
+              focusNode: emailNode,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                  borderSide: BorderSide(
+                      style: BorderStyle.solid, color: Colors.black26),
+                ),
+                hintMaxLines: 2,
+                // border:  ,
+                hintText: 'Email',
+
+                hintStyle: TextStyle(letterSpacing: 3),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: TextFormField(
+              focusNode: passNode,
+              obscureText: true,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          style: BorderStyle.solid, color: Colors.black26),
+                      borderRadius: BorderRadius.circular(20.0)),
+                  hintMaxLines: 3,
+                  hintText: 'Password',
+                  hintStyle: TextStyle(letterSpacing: 3)),
+            ),
+          ),
+          SizedBox(
+            height: 20.0,
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text(
+              'SIGNUP',
+              style: TextStyle(letterSpacing: 1.5),
+            ),
+            style: ButtonStyle(
+              padding: MaterialStateProperty.all(EdgeInsets.only(
+                  right: 25.0, left: 25.0, top: 15.0, bottom: 15.0)),
+              backgroundColor: MaterialStateProperty.all(Colors.black),
+              foregroundColor: MaterialStateProperty.all(Colors.white70),
+            ),
+          )
+        ]),
+      ]),
+    );
+  }
+}
