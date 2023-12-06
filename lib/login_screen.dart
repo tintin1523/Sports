@@ -27,9 +27,24 @@ class LoginScreen extends StatelessWidget {
             )
           ]),
       body: ListView(children: [
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0,top:15.0),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.skip_previous_outlined,
+                    size: 35.0,
+                  )),
+            )
+          ],
+        ),
         Column(mainAxisAlignment: MainAxisAlignment.start, children: [
           SizedBox(
-            height: 60.0,
+            height: 25.0,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 40.0),

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:sportsapp/login_screen.dart';
 import 'package:sportsapp/text.dart';
 
 
@@ -65,7 +66,9 @@ class Basketball extends StatelessWidget {
               width: double.infinity,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+              },
               child: Text(
                 'NEXT',
                 style: TextStyle(letterSpacing: 2.0, fontSize: 18.0),
