@@ -5,6 +5,10 @@ class SignUp extends StatelessWidget {
   FocusNode emailNode = FocusNode();
   FocusNode passNode = FocusNode();
   FocusNode confirmNode = FocusNode();
+  var fullName = TextEditingController();
+  var email = TextEditingController();
+  var password = TextEditingController();
+  var confirmPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -70,17 +74,21 @@ class SignUp extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 8.0,),
+          SizedBox(
+            height: 8.0,
+          ),
           // Full name
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextFormField(
-              onFieldSubmitted: (val){
+              controller: fullName,
+              onFieldSubmitted: (val) {
                 FocusScope.of(context).requestFocus(emailNode);
               },
               focusNode: fullNode,
               obscureText: true,
               decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.perm_identity),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
                           style: BorderStyle.solid, color: Colors.black26),
@@ -98,8 +106,10 @@ class SignUp extends StatelessWidget {
                 //class FocusScope and method requestFocus
                 FocusScope.of(context).requestFocus(passNode);
               },
+              controller: email,
               focusNode: emailNode,
               decoration: InputDecoration(
+                prefixIcon: Icon(Icons.email_outlined),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide(
@@ -117,12 +127,15 @@ class SignUp extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextFormField(
-              onFieldSubmitted: (val){
+              onFieldSubmitted: (val) {
                 FocusScope.of(context).requestFocus(confirmNode);
               },
+              controller: password,
               focusNode: passNode,
               obscureText: true,
               decoration: InputDecoration(
+                  suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                  prefixIcon: Icon(Icons.password),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
                           style: BorderStyle.solid, color: Colors.black26),
@@ -136,9 +149,12 @@ class SignUp extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextFormField(
+              controller: confirmPassword,
               focusNode: confirmNode,
               obscureText: true,
               decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.u_turn_right_outlined),
+                  suffixIcon: Icon(Icons.remove_red_eye_outlined),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
                           style: BorderStyle.solid, color: Colors.black26),
@@ -149,21 +165,26 @@ class SignUp extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20.0,
+            height: 15.0,
           ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(
-              'SIGNUP',
-              style: TextStyle(letterSpacing: 1.5),
+          //Sign Up Button
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Container(
+              width: double.infinity,
+              child: MaterialButton(
+                color: Colors.black,
+                onPressed: () {},
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    'SIGN UP',
+                    style: TextStyle(fontSize: 15.0, letterSpacing: 1.0,color: Colors.white70),
+                  ),
+                ),
+              ),
             ),
-            style: ButtonStyle(
-              padding: MaterialStateProperty.all(EdgeInsets.only(
-                  right: 25.0, left: 25.0, top: 15.0, bottom: 15.0)),
-              backgroundColor: MaterialStateProperty.all(Colors.black),
-              foregroundColor: MaterialStateProperty.all(Colors.white70),
-            ),
-          ),
+          )
         ]),
       ]),
     );

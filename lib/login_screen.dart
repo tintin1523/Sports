@@ -4,6 +4,8 @@ import 'package:sportsapp/signup_screen.dart';
 class LoginScreen extends StatelessWidget {
   FocusNode emailNode = FocusNode();
   FocusNode passNode = FocusNode();
+  var email = TextEditingController();
+  var password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -68,14 +70,16 @@ class LoginScreen extends StatelessWidget {
           ),
           //email
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: TextFormField(
+              controller: email,
               onFieldSubmitted: (val) {
                 //class FocusScope and method requestFocus
                 FocusScope.of(context).requestFocus(passNode);
               },
               focusNode: emailNode,
               decoration: InputDecoration(
+                prefixIcon: Icon(Icons.email_outlined),
                 labelText: 'Email Address',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -91,11 +95,15 @@ class LoginScreen extends StatelessWidget {
           ),
           //password
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
             child: TextFormField(
+              controller: password,
               focusNode: passNode,
               obscureText: true,
               decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.password),
+                  suffixIcon: Icon(Icons.remove_red_eye_outlined),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
                           style: BorderStyle.solid, color: Colors.black26),
@@ -106,19 +114,26 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20.0,
+            height: 15.0,
           ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(
-              'LOGIN',
-              style: TextStyle(letterSpacing: 1.5),
-            ),
-            style: ButtonStyle(
-              padding: MaterialStateProperty.all(EdgeInsets.only(
-                  right: 25.0, left: 25.0, top: 15.0, bottom: 15.0)),
-              backgroundColor: MaterialStateProperty.all(Colors.black),
-              foregroundColor: MaterialStateProperty.all(Colors.white70),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Container(
+              width: double.infinity,
+              child: MaterialButton(
+                color: Colors.black,
+                onPressed: () {},
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    'LOGIN',
+                    style: TextStyle(
+                        fontSize: 15.0,
+                        letterSpacing: 1.0,
+                        color: Colors.white70),
+                  ),
+                ),
+              ),
             ),
           ),
           Padding(
@@ -127,16 +142,22 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Don't have account signup now",
+                  "Don't have account? ",
                   style: TextStyle(
                     letterSpacing: 1.0,
                   ),
                 ),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUp()));
-                    },
-                    icon: Icon(Icons.assignment_ind_outlined))
+                Padding(
+                  padding: const EdgeInsets.only(top: 3.0),
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>SignUp()));
+                      },
+                      child: Text(
+                        'REGISTER NOW',
+                        style: TextStyle(fontSize: 12.0, color: Colors.black45),
+                      )),
+                )
               ],
             ),
           )

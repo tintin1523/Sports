@@ -65,19 +65,24 @@ class Basketball extends StatelessWidget {
               height: 15.0,
               width: double.infinity,
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-              },
-              child: Text(
-                'NEXT',
-                style: TextStyle(letterSpacing: 2.0, fontSize: 18.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Container(
+                width: double.infinity,
+                child: MaterialButton(
+                  color: Colors.black,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text(
+                      'NEXT',
+                      style: TextStyle(fontSize: 15.0, letterSpacing: 2.0,color: Colors.white70),
+                    ),
+                  ),
+                ),
               ),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.black),
-                  foregroundColor: MaterialStateProperty.all(Colors.white70),
-                  padding: MaterialStateProperty.all(EdgeInsets.only(
-                      left: 30.0, right: 30.0, bottom: 10.0, top: 10.0))),
             )
           ],
         ),
