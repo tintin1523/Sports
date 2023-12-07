@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportsapp/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   FocusNode emailNode = FocusNode();
@@ -30,7 +31,7 @@ class LoginScreen extends StatelessWidget {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8.0,top:15.0),
+              padding: const EdgeInsets.only(left: 8.0, top: 15.0),
               child: IconButton(
                   onPressed: () {
                     Navigator.pop(context);
@@ -65,6 +66,7 @@ class LoginScreen extends StatelessWidget {
               height: 65.0,
             ),
           ),
+          //email
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextFormField(
@@ -74,6 +76,7 @@ class LoginScreen extends StatelessWidget {
               },
               focusNode: emailNode,
               decoration: InputDecoration(
+                labelText: 'Email Address',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide(
@@ -81,12 +84,12 @@ class LoginScreen extends StatelessWidget {
                 ),
                 hintMaxLines: 2,
                 // border:  ,
-                hintText: 'Email',
 
                 hintStyle: TextStyle(letterSpacing: 3),
               ),
             ),
           ),
+          //password
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextFormField(
@@ -98,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                           style: BorderStyle.solid, color: Colors.black26),
                       borderRadius: BorderRadius.circular(20.0)),
                   hintMaxLines: 3,
-                  hintText: 'Password',
+                  labelText: 'Password',
                   hintStyle: TextStyle(letterSpacing: 3)),
             ),
           ),
@@ -108,7 +111,7 @@ class LoginScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () {},
             child: Text(
-              'SIGNUP',
+              'LOGIN',
               style: TextStyle(letterSpacing: 1.5),
             ),
             style: ButtonStyle(
@@ -116,6 +119,25 @@ class LoginScreen extends StatelessWidget {
                   right: 25.0, left: 25.0, top: 15.0, bottom: 15.0)),
               backgroundColor: MaterialStateProperty.all(Colors.black),
               foregroundColor: MaterialStateProperty.all(Colors.white70),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 15.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have account signup now",
+                  style: TextStyle(
+                    letterSpacing: 1.0,
+                  ),
+                ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUp()));
+                    },
+                    icon: Icon(Icons.assignment_ind_outlined))
+              ],
             ),
           )
         ]),
